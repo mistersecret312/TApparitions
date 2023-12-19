@@ -5,8 +5,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.tapparitions.TApparitionsMod;
+import whocraft.tardis_refined.registry.DeferredRegistry;
+import whocraft.tardis_refined.registry.ItemRegistry;
+import whocraft.tardis_refined.registry.RegistrySupplier;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class TAItems {
@@ -14,7 +18,8 @@ public class TAItems {
     public static List<RegistrySupplier<Item>> TAB_ITEMS = new ArrayList<>();
     public static final DeferredRegistry<CreativeModeTab> TABS = DeferredRegistry.create(TApparitionsMod.MOD_ID, Registries.CREATIVE_MODE_TAB);
 
-    public static final RegistrySupplier<CreativeModeTab> MAIN_TAB = TABS.register("main_tab", ItemRegistry::getCreativeTab);
+    public static final RegistrySupplier<CreativeModeTab> MAIN_TAB = TABS.register("tapparitions", TAItems::getCreativeTab);
+
 
 
     public static final DeferredRegistry<Item> ITEMS = DeferredRegistry.create(TApparitionsMod.MOD_ID, Registries.ITEM);

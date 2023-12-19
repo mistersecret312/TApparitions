@@ -2,14 +2,24 @@ architectury {
     common(rootProject.enabled_platforms.split(","))
 }
 
+
+repositories {
+    maven {
+        name = "TARDIS Refined"
+        url = "https://maven.craig.software/repository/whocraft/"
+    }
+}
+
 loom {
-    accessWidenerPath = file("src/main/resources/examplemod.accesswidener")
+    accessWidenerPath = file("src/main/resources/tapparitions.accesswidener")
 }
 
 dependencies {
     // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
     // Do NOT use other classes from fabric loader
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+
+    modImplementation "whocraft:tardis_refined_fabric:${rootProject.tardis_refined_version}"
 
     // Forge Config API Port
     modCompileOnlyApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${rootProject.forge_config_api_port_version}"

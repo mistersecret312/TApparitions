@@ -17,7 +17,7 @@ configurations {
     shadowCommon // Don't use shadow from the shadow plugin since it *excludes* files.
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentForge.extendsFrom common
+    developmentNeoForge.extendsFrom common
 }
 
 repositories {
@@ -29,16 +29,45 @@ repositories {
 
 dependencies {
     neoForge "net.neoforged:neoforge:${neoforge_version}"
+    modImplementation "whocraft:tardis_refined_forge:${rootProject.tardis_refined_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }
 
+def resourceTargets = ["META-INF/mods.toml", "pack.mcmeta"]
+def intoTargets = ["$rootDir/out/production/resources/", "$rootDir/out/production/${project.name}.main/", "$rootDir/bin/main/"]
+def replaceProperties = [mod_id: mod_id, mod_name: mod_name, mod_version: mod_version,
+                         mod_authors: mod_authors, credits:credits, mod_description: mod_description,
+                         display_url:display_url, logo_file:logo_file,
+                         issue_tracker_url: issue_tracker_url,
+                         license: license,
+                         neoforge_version_range: neoforge_version_range, neoforge_minecraft_version_range: neoforge_minecraft_version_range,
+                         neoforge_loader_version_range: neoforge_loader_version_range,
+                         pack_format: pack_format,
+                         neoforge_resource_pack_format: forge_resource_pack_format,
+                         neoforge_data_pack_format: neoforge_data_pack_format,
+                         // forge_immersive_portals_version_range: forge_immersive_portals_version_range
+                         // ,display_test_type: display_test_type
+]
 processResources {
-    inputs.property "version", project.version
+    inputs.properties replaceProperties
+    replaceProperties.put 'project', project
 
-    filesMatching("META-INF/mods.toml") {
-        expand "version": project.version
+    filesMatching(resourceTargets) {
+        expand replaceProperties
+    }
+
+    intoTargets.each { target ->
+        if (file(target).exists()) {
+            copy {
+                from(sourceSets.main.resources) {
+                    include resourceTargets
+                    expand replaceProperties
+                }
+                into target
+            }
+        }
     }
 }
 

@@ -49,6 +49,7 @@ dependencies {
     // Adds a dependency on a specific module
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-world:${rootProject.cardinal_version}"
 
+    modImplementation "whocraft:tardis_refined_fabric:${rootProject.tardis_refined_version}"
 
     // Includes Cardinal Components API as a Jar-in-Jar dependency (optional)
     include "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${rootProject.cardinal_version}"
@@ -67,13 +68,40 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }
 
-processResources {
-    inputs.property "version", project.version
+def resourceTargets = ["fabric.mod.json", "tardis_refined.mixins.json"]
+def intoTargets = ["$rootDir/out/production/resources/", "$rootDir/out/production/${project.name}.main/", "$rootDir/bin/main/"]
+def replaceProperties = [mod_id: mod_id, mod_name: mod_name, mod_version: mod_version,
+                         mod_authors                           : mod_authors, credits: credits, mod_description: mod_description,
+                         display_url                           : display_url, logo_file: logo_file,
+                         issue_tracker_url                     : issue_tracker_url,
+                         homepage_url                          : homepage_url,
+                         license                               : license,
+                         fabric_api_version_range              : fabric_api_version_range, fabric_minecraft_version_range: fabric_minecraft_version_range,
+                         fabric_loader_version_range           : fabric_loader_version_range,
+                         fabric_immersive_portals_version_range: fabric_immersive_portals_version_range
+]
 
-    filesMatching("fabric.mod.json") {
-        expand "version": project.version
+processResources {
+    inputs.properties replaceProperties
+    replaceProperties.put 'project', project
+
+    filesMatching(resourceTargets) {
+        expand replaceProperties
+    }
+
+    intoTargets.each { target ->
+        if (file(target).exists()) {
+            copy {
+                from(sourceSets.main.resources) {
+                    include resourceTargets
+                    expand replaceProperties
+                }
+                into target
+            }
+        }
     }
 }
+
 
 shadowJar {
     exclude "architectury.common.json"
