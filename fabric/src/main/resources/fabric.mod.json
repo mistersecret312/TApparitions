@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_authors}"
+  ],
+  "contributors": [
+    "${credits}"
+  ],
+  "contact": {
+    "sources": "${display_url}",
+    "issues": "${issue_tracker_url}",
+    "homepage": "${homepage_url}"
+  },
+  "license": "${license}",
+  "icon": " ",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.tapparitions.fabric.TApparitionsFabric"
+    ]
+  },
+  "depends": {
+    "fabricloader": "${fabric_loader_version_range}",
+    "minecraft": "${fabric_minecraft_version_range}",
+    "fabric-api": "${fabric_api_version_range}"
+  }
+}
