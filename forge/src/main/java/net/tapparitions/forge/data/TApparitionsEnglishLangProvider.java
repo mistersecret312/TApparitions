@@ -18,6 +18,7 @@ public class TApparitionsEnglishLangProvider extends LanguageProvider {
     protected void addTranslations() {
 
         addUpgrade(TAUpgrades.EXPLORER_IV.get(), "Exploration IV", "x10000 Increment");
+        addUpgrade(TAUpgrades.HEALING_I.get(), "Medical Systems", "Basic Healing capabilities for everyone in the TARDIS");
     }
 
     private void addUpgrade(Upgrade upgrade, String title, String description) {

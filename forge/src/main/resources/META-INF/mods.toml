@@ -1,4 +1,4 @@
-modLoader = "javafml"
+modLoader = "neoforge"
 loaderVersion = "[47,)"
 #issueTrackerURL = ""
 license = "All Rights Reserved"
