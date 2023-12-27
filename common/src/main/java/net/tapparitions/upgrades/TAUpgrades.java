@@ -1,8 +1,5 @@
 package net.tapparitions.upgrades;
 
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
@@ -26,14 +23,14 @@ public class TAUpgrades {
                     .setIncrementAmount(10000).setSkillPointsRequired(75).setPosition(4, 2));
 
     public static final RegistrySupplier<Upgrade> HEALING_I = UPGRADE_DEFERRED_REGISTRY.register("healing_i", () ->
-            new Upgrade(createPotion(MobEffects.HEAL)::copy, Upgrades.DEFENSE_SYSTEM, makeKey("healing_i"), Upgrade.UpgradeType.MAIN_UPGRADE)
+            new Upgrade(() -> createPotionStack(Potions.HEALING), Upgrades.DEFENSE_SYSTEM, makeKey("healing_i"), Upgrade.UpgradeType.MAIN_UPGRADE)
                     .setSkillPointsRequired(75).setPosition(-1, 1));
 
 
 
-    public static ItemStack createPotion(MobEffect effect){
+    public static ItemStack createPotionStack(Potion potion){
         ItemStack itemStack = new ItemStack(Items.POTION);
-        PotionUtils.setPotion(itemStack, new Potion(new MobEffectInstance(effect)));
+        PotionUtils.setPotion(itemStack, potion);
         return itemStack;
     }
 }

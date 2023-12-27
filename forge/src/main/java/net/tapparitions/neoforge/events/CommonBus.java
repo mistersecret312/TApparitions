@@ -1,4 +1,4 @@
-package net.tapparitions.forge.events;
+package net.tapparitions.neoforge.events;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
@@ -7,9 +7,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.TickEvent;
 import net.tapparitions.TApparitionsMod;
 import net.tapparitions.upgrades.TAUpgrades;
-import whocraft.tardis_refined.TardisRefined;
 import whocraft.tardis_refined.common.capability.TardisLevelOperator;
-import whocraft.tardis_refined.common.dimension.TardisTeleportData;
 import whocraft.tardis_refined.registry.DimensionTypes;
 
 @Mod.EventBusSubscriber(modid = TApparitionsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)

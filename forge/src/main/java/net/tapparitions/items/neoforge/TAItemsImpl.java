@@ -1,4 +1,4 @@
-package net.tapparitions.forge.items.forge;
+package net.tapparitions.items.neoforge;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

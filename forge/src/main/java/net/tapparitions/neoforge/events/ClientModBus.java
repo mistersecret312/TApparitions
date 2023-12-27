@@ -1,4 +1,4 @@
-package net.tapparitions.forge.events;
+package net.tapparitions.neoforge.events;
 
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;

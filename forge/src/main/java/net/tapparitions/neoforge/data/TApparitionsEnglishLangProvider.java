@@ -1,4 +1,4 @@
-package net.tapparitions.forge.data;
+package net.tapparitions.neoforge.data;
 
 import net.minecraft.Util;
 import net.minecraft.data.PackOutput;

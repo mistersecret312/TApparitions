@@ -1,4 +1,4 @@
-package net.tapparitions.forge;
+package net.tapparitions.neoforge;
 
 import net.minecraft.data.DataGenerator;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -7,7 +7,7 @@ import net.tapparitions.TApparitionsMod;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.tapparitions.forge.data.TApparitionsEnglishLangProvider;
+import net.tapparitions.neoforge.data.TApparitionsEnglishLangProvider;
 
 @Mod(TApparitionsMod.MOD_ID)
 public class TApparitionsNeo {
