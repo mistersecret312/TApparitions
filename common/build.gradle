@@ -25,6 +25,14 @@ dependencies {
     modCompileOnlyApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${rootProject.forge_config_api_port_version}"
 }
 
+def generatedResources = project(":forge").file("src/generated/resources")
+
+sourceSets {
+    main {
+        resources.srcDir generatedResources
+    }
+}
+
 publishing {
     publications {
         mavenCommon(MavenPublication) {

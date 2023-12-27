@@ -10,6 +10,15 @@ architectury {
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
 
+    runs {
+        data {
+            data()
+            programArgs "--all", "--mod", "${mod_id}"
+            programArgs "--output", project(":forge").file("src/generated/resources").absolutePath
+            programArgs "--existing", project(":common").file("src/main/resources/").absolutePath
+        }
+    }
+
 }
 
 configurations {

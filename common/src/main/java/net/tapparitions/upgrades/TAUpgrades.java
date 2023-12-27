@@ -1,6 +1,13 @@
 package net.tapparitions.upgrades;
 
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.tapparitions.TApparitionsMod;
 import whocraft.tardis_refined.common.capability.upgrades.IncrementUpgrade;
 import whocraft.tardis_refined.common.capability.upgrades.Upgrade;
@@ -13,9 +20,20 @@ import static net.tapparitions.TApparitionsMod.makeKey;
 public class TAUpgrades {
 
     public static final DeferredRegistry<Upgrade> UPGRADE_DEFERRED_REGISTRY = DeferredRegistry.create(TApparitionsMod.MOD_ID, Upgrades.UPGRADE_REGISTRY_KEY);
-    // Base Upgrades
+
     public static final RegistrySupplier<Upgrade> EXPLORER_IV = UPGRADE_DEFERRED_REGISTRY.register("explorer_iv", () ->
-            new IncrementUpgrade(Items.COMPASS::getDefaultInstance, Upgrades.EXPLORER_III, makeKey("explorer_iv"), Upgrade.UpgradeType.SUB_UPGRADE)
+            new IncrementUpgrade(Items.RECOVERY_COMPASS::getDefaultInstance, Upgrades.EXPLORER_III, makeKey("explorer_iv"), Upgrade.UpgradeType.SUB_UPGRADE)
                     .setIncrementAmount(10000).setSkillPointsRequired(75).setPosition(4, 2));
 
+    public static final RegistrySupplier<Upgrade> HEALING_I = UPGRADE_DEFERRED_REGISTRY.register("healing_i", () ->
+            new Upgrade(createPotion(MobEffects.HEAL)::copy, Upgrades.DEFENSE_SYSTEM, makeKey("healing_i"), Upgrade.UpgradeType.MAIN_UPGRADE)
+                    .setSkillPointsRequired(75).setPosition(-1, 1));
+
+
+
+    public static ItemStack createPotion(MobEffect effect){
+        ItemStack itemStack = new ItemStack(Items.POTION);
+        PotionUtils.setPotion(itemStack, new Potion(new MobEffectInstance(effect)));
+        return itemStack;
+    }
 }

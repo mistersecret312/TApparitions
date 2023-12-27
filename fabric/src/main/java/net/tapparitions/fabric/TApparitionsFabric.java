@@ -6,6 +6,7 @@ import net.tapparitions.TApparitionsMod;
 public class TApparitionsFabric implements ModInitializer {
     @Override
     public void onInitialize() {
+        ModEvents.addCommonEvents();
         TApparitionsMod.init();
     }
 }
