@@ -1,6 +1,12 @@
 {
+  "upgrade.tapparitions.er_i": "Emergency Response I",
+  "upgrade.tapparitions.er_i.description": "If player was to reach a near-death situation, the TARDIS will grant it strong Regeneration",
   "upgrade.tapparitions.explorer_iv": "Exploration IV",
   "upgrade.tapparitions.explorer_iv.description": "x10000 Increment",
   "upgrade.tapparitions.healing_i": "Medical Systems",
-  "upgrade.tapparitions.healing_i.description": "Basic Healing capabilities for everyone in the TARDIS"
+  "upgrade.tapparitions.healing_i.description": "Basic Healing capabilities for everyone in the TARDIS",
+  "upgrade.tapparitions.healing_ii": "Healing I",
+  "upgrade.tapparitions.healing_ii.description": "Allows the TARDIS to remove any negative effect",
+  "upgrade.tapparitions.protection_i": "Protection I",
+  "upgrade.tapparitions.protection_i.description": "Makes sure players wont get lethal damage"
 }
