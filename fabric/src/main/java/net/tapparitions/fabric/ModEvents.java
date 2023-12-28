@@ -22,7 +22,7 @@ public class ModEvents {
                 TardisLevelOperator operator = TardisLevelOperator.get(world).get();
                 if(operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.HEALING_I.get())){
                     operator.getLevel().getServer().getLevel(operator.getLevel().dimension()).players().forEach(player -> {
-                        if(operator.getLevel().getGameTime() % 400 == 0) {
+                        if(operator.getLevel().getGameTime() % 200 == 0) {
                             player.heal(2f);
                         }
                     });
