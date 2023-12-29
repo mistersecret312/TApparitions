@@ -1,12 +1,24 @@
 {
-  "upgrade.tapparitions.er_i": "Emergency Response I",
+  "upgrade.tapparitions.er_i": "Emergency Response",
   "upgrade.tapparitions.er_i.description": "If player was to reach a near-death situation, the TARDIS will grant it strong Regeneration",
   "upgrade.tapparitions.explorer_iv": "Exploration IV",
   "upgrade.tapparitions.explorer_iv.description": "x10000 Increment",
   "upgrade.tapparitions.healing_i": "Medical Systems",
   "upgrade.tapparitions.healing_i.description": "Basic Healing capabilities for everyone in the TARDIS",
-  "upgrade.tapparitions.healing_ii": "Healing I",
-  "upgrade.tapparitions.healing_ii.description": "Allows the TARDIS to remove any negative effect",
+  "upgrade.tapparitions.healing_iii": "Recovery II",
+  "upgrade.tapparitions.healing_iii.description": "Greatly enhances the basic healing capabilities of a TARDIS",
+  "upgrade.tapparitions.healing_iv": "Recovery III",
+  "upgrade.tapparitions.healing_iv.description": "Gives everyone in the TARDIS some beneficial effects",
   "upgrade.tapparitions.protection_i": "Protection I",
-  "upgrade.tapparitions.protection_i.description": "Makes sure players wont get lethal damage"
+  "upgrade.tapparitions.protection_i.description": "Makes sure players wont get lethal damage",
+  "upgrade.tapparitions.protection_ii": "Protection II",
+  "upgrade.tapparitions.protection_ii.description": "Protects anyone inside the TARDIS, doesn't let their health go below 25%",
+  "upgrade.tapparitions.protection_iii": "Protection III",
+  "upgrade.tapparitions.protection_iii.description": "Protects anyone inside the TARDIS, doesn't let their health go below 50%",
+  "upgrade.tapparitions.protection_iv": "Protection IV",
+  "upgrade.tapparitions.protection_iv.description": "Protects anyone inside the TARDIS, doesn't let their health drop.",
+  "upgrade.tapparitions.protection_v": "Protection V",
+  "upgrade.tapparitions.protection_v.description": "Protects anyone in 16 range from the exterior from all incoming damage",
+  "upgrade.tapparitions.recovery_ii": "Recovery I",
+  "upgrade.tapparitions.recovery_ii.description": "Allows the TARDIS to remove any negative effect"
 }
