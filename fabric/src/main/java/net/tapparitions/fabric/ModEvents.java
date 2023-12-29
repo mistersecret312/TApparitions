@@ -1,14 +1,22 @@
 package net.tapparitions.fabric;
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityEvent;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.level.Level;
+import net.tapparitions.items.TransmatItem;
 import net.tapparitions.upgrades.TAUpgrades;
+import whocraft.tardis_refined.api.event.TardisEvents;
 import whocraft.tardis_refined.common.capability.TardisLevelOperator;
+import whocraft.tardis_refined.common.tardis.ExteriorShell;
+import whocraft.tardis_refined.common.tardis.TardisNavLocation;
 import whocraft.tardis_refined.registry.DimensionTypes;
 
 import static net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.START_WORLD_TICK;
@@ -50,13 +58,34 @@ public class ModEvents {
                 }
             }
         });
+
+        TardisEvents.TARDIS_ENTRY_EVENT.register((tardisLevelOperator, livingEntity, sourceLocation, destinationLocation) -> {
+            if(livingEntity instanceof Player player){
+                player.getInventory().items.forEach(item -> {
+                    if(item.getItem() instanceof TransmatItem transmat){
+                        transmat.setItemData(item, destinationLocation);
+                    }
+                });
+            }
+        });
+
+        TardisEvents.TARDIS_EXIT_EVENT.register(((tardisLevelOperator, livingEntity, sourceLocation, destinationLocation) -> {
+            if(livingEntity instanceof Player player){
+                player.getInventory().items.forEach(item -> {
+                    if(item.getItem() instanceof TransmatItem transmat){
+                        transmat.setItemData(item, destinationLocation);
+                    }
+                });
+            }
+        }));
+
         ServerLivingEntityEvents.ALLOW_DEATH.register((entity, source, amount) -> {
             Level world = entity.level();
             if (world instanceof ServerLevel serverLevel) {
                 if (world.dimensionTypeId().location() == DimensionTypes.TARDIS.location()) {
                     TardisLevelOperator operator = TardisLevelOperator.get(serverLevel).get();
                     if (operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.PROTECTION_I.get()) && entity instanceof Player) {
-                        return entity.getHealth()<amount;
+                        return entity.getHealth()-amount != 0;
                     }
                 }
             }

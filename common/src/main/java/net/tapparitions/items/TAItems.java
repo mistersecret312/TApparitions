@@ -24,7 +24,7 @@ public class TAItems {
 
     public static final DeferredRegistry<Item> ITEMS = DeferredRegistry.create(TApparitionsMod.MOD_ID, Registries.ITEM);
 
-    public static final RegistrySupplier<Item> KEY = register("test", () -> new Item(new Item.Properties().stacksTo(1)), true);
+    public static final RegistrySupplier<Item> TRANSMAT = register("transmat", () -> new Item(new Item.Properties().stacksTo(1)), true);
 
 
 

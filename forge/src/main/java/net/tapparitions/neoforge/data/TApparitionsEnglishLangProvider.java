@@ -19,7 +19,7 @@ public class TApparitionsEnglishLangProvider extends LanguageProvider {
 
         addUpgrade(TAUpgrades.EXPLORER_IV.get(), "Exploration IV", "x10000 Increment");
         addUpgrade(TAUpgrades.HEALING_I.get(), "Medical Systems", "Basic Healing capabilities for everyone in the TARDIS");
-        addUpgrade(TAUpgrades.HEALING_II.get(), "Healing I", "Allows the TARDIS to remove any negative effect");
+        addUpgrade(TAUpgrades.HEALING_II.get(), "Recovery I", "Allows the TARDIS to remove any negative effect");
         addUpgrade(TAUpgrades.PROTECTION_I.get(), "Protection I", "Makes sure players wont get lethal damage");
         addUpgrade(TAUpgrades.ER_I.get(), "Emergency Response I", "If player was to reach a near-death situation, the TARDIS will grant it strong Regeneration");
     }
