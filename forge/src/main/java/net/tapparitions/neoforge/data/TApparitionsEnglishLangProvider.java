@@ -25,11 +25,13 @@ public class TApparitionsEnglishLangProvider extends LanguageProvider {
 
         addUpgrade(TAUpgrades.PROTECTION_II.get(), "Protection II", "Protects anyone inside the TARDIS, doesn't let their health go below 25%");
         addUpgrade(TAUpgrades.PROTECTION_III.get(), "Protection III", "Protects anyone inside the TARDIS, doesn't let their health go below 50%");
-        addUpgrade(TAUpgrades.PROTECTION_IV.get(), "Protection IV", "Protects anyone inside the TARDIS, doesn't let their health drop.");
+        addUpgrade(TAUpgrades.PROTECTION_IV.get(), "Protection IV", "Protects anyone inside the TARDIS, doesn't let their health drop");
         addUpgrade(TAUpgrades.PROTECTION_V.get(), "Protection V", "Protects anyone in 16 range from the exterior from all incoming damage");
 
         addUpgrade(TAUpgrades.HEALING_III.get(), "Recovery II", "Greatly enhances the basic healing capabilities of a TARDIS");
         addUpgrade(TAUpgrades.HEALING_IV.get(), "Recovery III", "Gives everyone in the TARDIS some beneficial effects");
+
+        addUpgrade(TAUpgrades.ENVIR_PROT.get(), "Environmental Protection", "Allows the TARDIS to protect living beings around it from environmental hazards");
     }
 
     private void addUpgrade(Upgrade upgrade, String title, String description) {

@@ -23,44 +23,48 @@ public class TAUpgrades {
                     .setIncrementAmount(10000).setSkillPointsRequired(75).setPosition(4, 2));
 
     public static final RegistrySupplier<Upgrade> HEALING_I = UPGRADE_DEFERRED_REGISTRY.register("healing_i", () ->
-            new Upgrade(() -> createPotionStack(Potions.HEALING), Upgrades.DEFENSE_SYSTEM, makeKey("healing_i"), Upgrade.UpgradeType.MAIN_UPGRADE)
-                    .setSkillPointsRequired(75).setPosition(-1, 1));
+            new PositionUpgrade(() -> createPotionStack(Potions.HEALING), Upgrades.DEFENSE_SYSTEM, makeKey("healing_i"), Upgrade.UpgradeType.MAIN_UPGRADE)
+                    .setPositionFloat(-5f, 1.8f).setSkillPointsRequired(75));
 
     public static final RegistrySupplier<Upgrade> HEALING_II = UPGRADE_DEFERRED_REGISTRY.register("recovery_ii", () ->
-            new Upgrade(() -> createPotionStack(Potions.STRONG_HEALING), TAUpgrades.HEALING_I, makeKey("recovery_ii"), Upgrade.UpgradeType.SUB_UPGRADE)
-                    .setSkillPointsRequired(75).setPosition(-2, 1));
+            new PositionUpgrade(() -> createPotionStack(Potions.STRONG_HEALING), TAUpgrades.HEALING_I, makeKey("recovery_ii"), Upgrade.UpgradeType.SUB_UPGRADE)
+                    .setPositionFloat(-5.8f, 2.6f).setSkillPointsRequired(75));
 
     public static final RegistrySupplier<Upgrade> HEALING_III = UPGRADE_DEFERRED_REGISTRY.register("healing_iii", () ->
-            new Upgrade(() -> createPotionStack(Potions.STRONG_HEALING), TAUpgrades.HEALING_II, makeKey("healing_iii"), Upgrade.UpgradeType.SUB_UPGRADE)
-                    .setSkillPointsRequired(75).setPosition(-3, 1));
+            new PositionUpgrade(() -> createPotionStack(Potions.STRONG_HEALING), TAUpgrades.HEALING_II, makeKey("healing_iii"), Upgrade.UpgradeType.SUB_UPGRADE)
+                    .setPositionFloat(-5.8f, 3.4f).setSkillPointsRequired(75));
 
     public static final RegistrySupplier<Upgrade> HEALING_IV = UPGRADE_DEFERRED_REGISTRY.register("healing_iv", () ->
-            new Upgrade(() -> createPotionStack(Potions.STRONG_HEALING), TAUpgrades.HEALING_III, makeKey("healing_iv"), Upgrade.UpgradeType.SUB_UPGRADE)
-                    .setSkillPointsRequired(75).setPosition(-4, 1));
+            new PositionUpgrade(() -> createPotionStack(Potions.STRONG_HEALING), TAUpgrades.HEALING_III, makeKey("healing_iv"), Upgrade.UpgradeType.SUB_UPGRADE)
+                    .setPositionFloat(-5.8f, 4.2f).setSkillPointsRequired(75));
 
     public static final RegistrySupplier<Upgrade> PROTECTION_I = UPGRADE_DEFERRED_REGISTRY.register("protection_i", () ->
-            new Upgrade(Items.SHIELD::getDefaultInstance, TAUpgrades.HEALING_I, makeKey("protection_i"), Upgrade.UpgradeType.SUB_UPGRADE)
-                    .setSkillPointsRequired(75).setPosition(-2, 2));
+            new PositionUpgrade(Items.SHIELD::getDefaultInstance, TAUpgrades.HEALING_I, makeKey("protection_i"), Upgrade.UpgradeType.SUB_UPGRADE)
+                    .setPositionFloat(-5f, 2.6f).setSkillPointsRequired(75));
 
     public static final RegistrySupplier<Upgrade> PROTECTION_II = UPGRADE_DEFERRED_REGISTRY.register("protection_ii", () ->
-            new Upgrade(Items.SHIELD::getDefaultInstance, TAUpgrades.PROTECTION_I, makeKey("protection_ii"), Upgrade.UpgradeType.SUB_UPGRADE)
-                    .setSkillPointsRequired(75).setPosition(-3, 2));
+            new PositionUpgrade(Items.SHIELD::getDefaultInstance, TAUpgrades.PROTECTION_I, makeKey("protection_ii"), Upgrade.UpgradeType.SUB_UPGRADE)
+                    .setPositionFloat(-5f, 3.4f).setSkillPointsRequired(75));
 
     public static final RegistrySupplier<Upgrade> PROTECTION_III = UPGRADE_DEFERRED_REGISTRY.register("protection_iii", () ->
-            new Upgrade(Items.SHIELD::getDefaultInstance, TAUpgrades.PROTECTION_II, makeKey("protection_iii"), Upgrade.UpgradeType.SUB_UPGRADE)
-                    .setSkillPointsRequired(75).setPosition(-4, 2));
+            new PositionUpgrade(Items.SHIELD::getDefaultInstance, TAUpgrades.PROTECTION_II, makeKey("protection_iii"), Upgrade.UpgradeType.SUB_UPGRADE)
+                    .setPositionFloat(-5f, 4.2f).setSkillPointsRequired(75));
 
     public static final RegistrySupplier<Upgrade> PROTECTION_IV = UPGRADE_DEFERRED_REGISTRY.register("protection_iv", () ->
-            new Upgrade(Items.SHIELD::getDefaultInstance, TAUpgrades.PROTECTION_III, makeKey("protection_iv"), Upgrade.UpgradeType.SUB_UPGRADE)
-                    .setSkillPointsRequired(75).setPosition(-5, 2));
+            new PositionUpgrade(Items.SHIELD::getDefaultInstance, TAUpgrades.PROTECTION_III, makeKey("protection_iv"), Upgrade.UpgradeType.SUB_UPGRADE)
+                    .setPositionFloat(-5f, 5f).setSkillPointsRequired(75));
 
     public static final RegistrySupplier<Upgrade> PROTECTION_V = UPGRADE_DEFERRED_REGISTRY.register("protection_v", () ->
-            new Upgrade(Items.SHIELD::getDefaultInstance, TAUpgrades.PROTECTION_IV, makeKey("protection_v"), Upgrade.UpgradeType.SUB_UPGRADE)
-                    .setSkillPointsRequired(75).setPosition(-6, 2));
+            new PositionUpgrade(Items.SHIELD::getDefaultInstance, TAUpgrades.PROTECTION_IV, makeKey("protection_v"), Upgrade.UpgradeType.SUB_UPGRADE)
+                    .setPositionFloat(-5f, 5.8f).setSkillPointsRequired(75));
 
     public static final RegistrySupplier<Upgrade> ER_I = UPGRADE_DEFERRED_REGISTRY.register("er_i", () ->
-            new Upgrade(Items.APPLE::getDefaultInstance, TAUpgrades.HEALING_I, makeKey("er_i"), Upgrade.UpgradeType.SUB_UPGRADE)
-                    .setSkillPointsRequired(75).setPosition(-2, 0));
+            new PositionUpgrade(Items.APPLE::getDefaultInstance, TAUpgrades.HEALING_I, makeKey("er_i"), Upgrade.UpgradeType.SUB_UPGRADE)
+                    .setPositionFloat(-4.2f, 2.6f).setSkillPointsRequired(75));
+
+    public static final RegistrySupplier<Upgrade> ENVIR_PROT = UPGRADE_DEFERRED_REGISTRY.register("ev_o", () ->
+            new PositionUpgrade(Items.AZALEA_LEAVES::getDefaultInstance, TAUpgrades.HEALING_I, makeKey("ev_o"), Upgrade.UpgradeType.SUB_UPGRADE)
+                    .setPositionFloat(-4.2f, 2.6f).setSkillPointsRequired(75));
 
 
 

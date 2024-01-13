@@ -30,17 +30,9 @@ public class CommonBus {
             if (event.phase == TickEvent.Phase.START) {
                 if (level.dimensionTypeId().location() == DimensionTypes.TARDIS.location()) {
                     TardisLevelOperator operator = TardisLevelOperator.get(serverLevel).get();
-                    float timemod = 0;
-                    if(operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.HEALING_II.get())){
-                        timemod = 0.8f;
-                    }
-                    if(operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.HEALING_III.get())){
-                        timemod = 0.5f;
-                    }
-                    float finalTimemod = timemod;
                     if(operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.HEALING_I.get())){
                         operator.getLevel().getServer().getLevel(operator.getLevel().dimension()).players().forEach(player -> {
-                            if(operator.getLevel().getGameTime() % 200*finalTimemod == 0) {
+                            if(operator.getLevel().getGameTime() % 200 == 0) {
                                 player.heal(2f);
                             }
                         });
@@ -89,18 +81,18 @@ public class CommonBus {
                     }
                 }
                 if(operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.ER_I.get())){
-                    if ((entity.getHealth()-event.getAmount()) / entity.getMaxHealth() < 0.1 && entity instanceof Player) {
-                        if((entity.getHealth()-event.getAmount())/entity.getMaxHealth() < 0 && !operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.PROTECTION_I.get())){
+                    if ((entity.getHealth()-event.getAmount()) / Math.max(1,entity.getMaxHealth()) < 0.1 && entity instanceof Player) {
+                        if((entity.getHealth()-event.getAmount())/Math.max(1,entity.getMaxHealth()) < 0 && !operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.PROTECTION_I.get())){
                             event.setAmount(event.getAmount()/2);
                         }
                         entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 80, 5, false, false, false));
                     }
                 }
                 if(operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.PROTECTION_II.get())){
-                    event.setCanceled(entity.getHealth()/entity.getMaxHealth() < 0.25);
+                    event.setCanceled(entity.getHealth()/Math.max(1,entity.getMaxHealth()) < 0.25);
                 }
                 if(operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.PROTECTION_III.get())){
-                    event.setCanceled(entity.getHealth()/entity.getMaxHealth() < 0.5);
+                    event.setCanceled(entity.getHealth()/Math.max(1,entity.getMaxHealth()) < 0.5);
                 }
                 if(operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.PROTECTION_V.get())){
                     BlockPos pos = operator.getExteriorManager().getLastKnownLocation().getPosition();

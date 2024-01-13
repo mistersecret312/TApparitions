@@ -14,12 +14,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.tapparitions.items.TransmatItem;
 import net.tapparitions.upgrades.TAUpgrades;
 import whocraft.tardis_refined.api.event.TardisEvents;
 import whocraft.tardis_refined.common.capability.TardisLevelOperator;
 import whocraft.tardis_refined.common.tardis.ExteriorShell;
 import whocraft.tardis_refined.common.tardis.TardisNavLocation;
+import whocraft.tardis_refined.common.tardis.manager.TardisExteriorManager;
 import whocraft.tardis_refined.registry.DimensionTypes;
 
 import static net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.START_WORLD_TICK;
@@ -60,40 +60,9 @@ public class ModEvents {
                     });
                 }
                 if(operator.getUpgradeHandler().isUpgradeUnlocked(TAUpgrades.HEALING_IV.get())){
-                    operator.getLevel().getServer().getLevel(operator.getLevel().dimension()).players().forEach(player -> player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 2, 5, false, false, true)));
+                    operator.getLevel().getServer().getLevel(operator.getLevel().dimension()).players().forEach(player -> player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 8, 5, false, false, true)));
                 }
             }
-        });
-
-        TardisEvents.TARDIS_ENTRY_EVENT.register((tardisLevelOperator, livingEntity, sourceLocation, destinationLocation) -> {
-            if(livingEntity instanceof Player player){
-                player.getInventory().items.forEach(item -> {
-                    if(item.getItem() instanceof TransmatItem transmat){
-                        transmat.setItemData(item, destinationLocation);
-                    }
-                });
-            }
-        });
-
-        TardisEvents.TARDIS_EXIT_EVENT.register(((tardisLevelOperator, livingEntity, sourceLocation, destinationLocation) -> {
-            if(livingEntity instanceof Player player){
-                player.getInventory().items.forEach(item -> {
-                    if(item.getItem() instanceof TransmatItem transmat){
-                        transmat.setItemData(item, destinationLocation);
-                    }
-                });
-            }
-        }));
-
-        ServerLivingEntityEvents.ALLOW_DEATH.register((entity, source, amount) -> {
-            Level world = entity.level();
-            if (world instanceof ServerLevel serverLevel) {
-                if (world.dimensionTypeId().location() == DimensionTypes.TARDIS.location()) {
-                    TardisLevelOperator operator = TardisLevelOperator.get(serverLevel).get();
-
-                }
-            }
-            return true;
         });
 
         ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, amount) -> {
